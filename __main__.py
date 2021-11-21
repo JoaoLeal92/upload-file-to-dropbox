@@ -5,13 +5,16 @@ from dotenv import load_dotenv
 
 
 def run():
+    print("INICIA OPERAÇÃO")
     load_dotenv()
 
     dbx = dropbox.Dropbox(os.getenv("dbx_token"))
     origin_path = os.getenv("origin_path")
     destination = os.getenv("destination")
 
+    print("Busca arquivo mais recente")
     latest_file = glob(os.path.join(origin_path, "*.sql"))[-1]
+    print(latest_file)
 
     dbx_files = [file.name for file in dbx.files_list_folder(
         '/db_backup').entries]

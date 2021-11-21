@@ -13,6 +13,8 @@ def run():
     destination = os.getenv("destination")
 
     print("Busca arquivo mais recente")
+    print("Lista de arquivos no diretorio: ",
+          glob(os.path.join(origin_path, "*.sql")))
     latest_file = glob(os.path.join(origin_path, "*.sql"))[-1]
     print(latest_file)
 
